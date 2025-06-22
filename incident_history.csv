@@ -1,0 +1,36 @@
+timestamp,component,severity,log_text,predicted_root_cause
+2025-06-21T21:33:39.688555,api-gateway,ERROR,[gateway-core] Surge in 5xx errors detected across multiple microservices.\nError trace:\n- Service: user-auth | Code: 502 | Msg: Bad Gateway\n- Service: payment-handler | Code: 504 | Msg: Gateway Timeout\nUpstream latency peaked at 912ms.\nLoad balancer reports backend pool depletion.\nCurrent concurrency: 2800 | Threshold: 2500\nRetry logic triggered 3 times with backoff.\nInvestigate backend readiness checks and scaling threshold,Service Unavailable
+2025-06-22T13:30:04.457046,disk-monitor,high,"ev/sda1.\nAvg write latency: 740ms\nI/O queue depth > 128 for sustained 5 minutes.\nContainer logs show delayed flush operations.\nFilesystem nearing inode exhaustion: 94% used.\nPotential write amplification from misconfigured log rotation.\nInvestigate disk pressure and consider resizing or balancing volumes.
+",Auth Expiry
+2025-06-22T13:30:48.588008,disk-monitor,medium,"
+2024-06-20 00:13:02,disk-monitor,ERROR,[disk-check] Disk I/O throttling detected on volume /dev/sda1.\nAvg write latency: 740ms\nI/O queue depth > 128 for sustained 5 minutes.\nContainer logs show delayed flush operations.\nFilesystem nearing inode exhaustion: 94% used.\nPotential write amplification from misconfigured log rotation.\nInvestigate disk pressure and consider resizing or balancing volumes.
+",Disk Full
+2025-06-22T13:52:54.207883,[disk-check],medium,"2024-06-20 00:13:02,disk-monitor,ERROR,[disk-check] Disk I/O throttling detected on volume /dev/sda1.\nAvg write latency: 740ms\nI/O queue depth > 128 for sustained 5 minutes.\nContainer logs show delayed flush operations.\nFilesystem nearing inode exhaustion: 94% used.\nPotential write amplification from misconfigured log rotation.\nInvestigate disk pressure and consider resizing or balancing volume",Disk Full
+2025-06-22T13:53:25.980922,[db-core],low,"2024-06-20 00:10:12,api-gateway,ERROR,[gateway-core] Surge in 5xx errors detected across multiple microservices.\nError trace:\n- Service: user-auth | Code: 502 | Msg: Bad Gateway\n- Service: payment-handler | Code: 504 | Msg: Gateway Timeout\nUpstream latency peaked at 912ms.\nLoad balancer reports backend pool depletion.\nCurrent concurrency: 2800 | Threshold: 2500\nRetry logic triggered 3 times with backoff.\nInvestigate backend readiness checks and scaling thresholds",Service Unavailable
+2025-06-22T13:53:32.270684,[db-core],low,"2024-06-20 00:15:55,db-service,CRITICAL,[db-core] Connection pool exhausted for PostgreSQL cluster.\nActive sessions: 150 | Max pool size: 120\nRecent slow queries:\n- SELECT * FROM orders WHERE status='pending' => 18.2s\n- UPDATE users SET active=false WHERE last_seen < NOW()-interval '30d' => 25.9s\nQuery planner hint mismatch detected.\nDeadlock logs indicate wait on advisory locks.\nTune long-running queries and expand connection pool size temporarily",DB Failure
+2025-06-22T13:53:51.641410,[auth-core],medium,"2024-06-20 00:11:45,auth-service,CRITICAL,[auth-core] Multiple authentication token validation failures observed.\nOIDC session state mismatch from client_id=abc123.\nSample trace ID: xyz456789\nRate of failed logins: 180/minute\nJWT signature verification failing due to key mismatch.\nRecent key rotation not propagated to all nodes.\nRecommend refreshing signing key store and auditing token lifecycle policies",Auth Failure
+2025-06-22T14:03:19.068877,[auth-core],medium,"2024-06-20 00:11:45,auth-service,CRITICAL,[auth-core] Multiple authentication token validation failures observed.\nOIDC session state mismatch from client_id=abc123.\nSample trace ID: xyz456789\nRate of failed logins: 180/minute\nJWT signature verification failing due to key mismatch.\nRecent key rotation not propagated to all nodes.\nRecommend refreshing signing key store and auditing token lifecycle policie",Auth Failure
+2025-06-22T14:21:05.268012,api-gateway,error,"[gateway-core] Surge in 5xx errors detected acrole microservices.
+Error trace:
+- Service: user-auth | Code: 502 | Msg: Bad Gateway
+- Service: payment-handler | Code: 504 | Msg: Gateway Timeout
+Upstream latency peaked at 912ms.
+Load balancer reports backend pool depletion.
+Current concurrency: 2800 | Threshold: 2500
+Retry logic triggered 3 times with backoff.
+Investigate backend readiness checks and scaling thresholdss multips.",Service Unavailable
+2025-06-22T14:21:21.535532,auth-service,critical,"[auth-core] Multiple authentication token validation failures observed.
+OIDC session state mismatch from client_id=abc123.
+Sample trace ID: xyz456789
+Rate of failed logins: 180/minute
+JWT signature verification failing due to key mismatch.
+Recent key rotation not propagated to all nodes.
+Recommend refreshing signing key store and auditing token lifecycle policies.",Auth Failure
+2025-06-22T14:21:27.310442,db-service,critical,"[db-core] Connection pool exhausted for PostgreSQL cluster.
+Active sessions: 150 | Max pool size: 120
+Recent slow queries:
+- SELECT * FROM orders WHERE status='pending' => 18.2s
+- UPDATE users SET active=false WHERE last_seen < NOW()-interval '30d' => 25.9s
+Query planner hint mismatch detected.
+Deadlock logs indicate wait on advisory locks.
+Tune long-running queries and expand connection pool size temporarily.",DB Failure
